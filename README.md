@@ -11,4 +11,5 @@ Jobs.ie: https://www.jobs.ie/Privacy.html
 
 Netflix: https://help.netflix.com/legal/privacy
 
-Fulfil: https://fulfilnutrition.com/ie/privacy-policy/
+Just Eat: https://www.just-eat.ie/privacypolicy
+
