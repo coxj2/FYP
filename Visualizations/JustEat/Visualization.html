@@ -1,0 +1,203 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Network | Sizing</title>
+
+  <meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis-network.min.css" rel="stylesheet" />
+  <style type="text/css">
+    html, body {
+      font: 10pt arial;
+    }
+    #mynetwork {
+      width: 1325px;
+      height: 550px;
+      border: 1px solid lightgray;
+    }
+	
+	div.vis-network div.vis-navigation div.vis-button.vis-up, 
+	div.vis-network div.vis-navigation div.vis-button.vis-down, 
+	div.vis-network div.vis-navigation div.vis-button.vis-left, 
+	div.vis-network div.vis-navigation div.vis-button.vis-right, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomIn, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomOut, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomExtends {
+		background-image: none !important;
+	}
+
+	div.vis-network div.vis-navigation div.vis-button:hover {
+		box-shadow: none !important;
+	}
+
+	.vis-button:after {
+		font-size: 2em;
+		color: gray;
+	}
+
+	.vis-button:hover:after {
+		font-size: 2em;
+		color: blue;
+	}
+
+	.vis-button.vis-up:after {
+		content: "▲";
+	}
+
+	.vis-button.vis-down:after {
+		content: "▼";
+	}
+
+	.vis-button.vis-left:after {
+		content: "◀";
+	}
+
+	.vis-button.vis-right:after {
+		content: "▶";
+	}
+
+	.vis-button.vis-zoomIn:after {
+		content: "+";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomOut:after {
+		content: "−";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomExtends:after {
+		content: "⤧";
+	}
+
+  </style>
+
+  <script type="text/javascript" src="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.js"></script>
+  <link href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    function draw() {
+      // create people.
+      // value corresponds with the age of the person
+      nodes = [
+        {id: 1, value: 100, color: 'rgba(0,0,250,0.2)', font:{size:16}, label: 'PROCESS', shape: 'circle'},
+        {id: 2, value: 100, color: 'rgba(150, 50, 50, 0.4)', font:{size:14}, label:'DATA TYPE', shape: 'circle'},
+        {id: 3, value: 100, color: 'rgba(255, 0, 0, 0.4)', font:{size:9}, label:'DATA CATEGORY', shape: 'circle'},
+        {id: 4, value: 100, color: 'rgba(0, 0, 255, 0.6)', font:{size:12}, label:'LEGAL BASIS', shape: 'circle'},
+        {id: 5, value: 100, color: 'rgba(128,0,0,0.6)', font:{size:11}, label:'DATA SOURCE', shape: 'circle'},
+        {id: 6, value: 5, color: 'rgba(255,255,0, 0.8)', font:{size:13}, label:'PROCESSOR', shape: 'circle'},
+		{id: 7, value: 5, color: 'rgba(250,175,25,0.6)', font:{size:13}, label:'AUTOMATED', shape: 'circle'},
+		{id: 8, value: 5, color: 'rgba(150,50,125,0.2)', font:{size:15}, label:'LOCATION', shape: 'circle'},
+		{id: 9, value: 5, color: 'rgba(0,255,255,0.6)', font:{size:9}, label:'DATA RETENTION', shape: 'circle'},
+		{id: 10, value: 100, color: 'rgba(255,0,255,0.4)', font:{size:18}, label:'RIGHTS', shape: 'circle'},
+        {id: 11, value: 5, color: 'rgba(150,255,0,0.4)', font:{size:12}, label:'THIRD PARTY', shape: 'circle'},
+        {id: 12, value: 5, color: 'rgba(150,55,200,0.6)', font:{size:10}, label:'DATA SHARING', shape: 'circle'},
+        {id: 13, value: 5, color: 'rgba(150,155,50,0.4)', font:{size:14}, label:'CONSENT', shape: 'circle'},
+		{id: 20, value: 10, label: 'Information Provided', font:{size:15}, shape: 'box', title: 'Consent: Voluntary </br> Data Category: Registration Information, Delivery Details, Transaction Information, Market Preferences, Feedback & Conversation Records, Health Information & Religious Beliefs </br> Data Source: You Provide </br> Third Party: Restaurants </br> Legal Basis: Prevent Acts in breach of Terms or Policy </br> Data Type: Name, Address, Telephone Number, Email Address, Password, Credit Card Number & Dietary Requirements </br> Data Sharing: Restaurant'},
+		{id: 21, value: 10, label: 'Information Collected Automatically', font:{size:15}, shape: 'box', title: 'Automated: Collected Automatically </br> Data Category: Activity Information, Cookies and Similar Technologies </br> Data Source: We Collect </br> Consent: Geo Location </br> Data Sharing: Geo Location'},
+		{id: 22, value: 10, label: 'Information from Third Parties', font:{size:15}, shape: 'box', title: 'Data Source: Third Party </br> Data Category: Analytics Reports and Market Research Surveys</br> Third Party: Information Obtained'},
+		{id: 23, value: 10, label: 'Who Information is Shared with', font:{size:15}, shape: 'box', title: 'Data Sharing: </br> Restaurants </br> Just Eat Companies within Group </br> Third Parties </br> Law Enforcement & Regulatory Bodies </br> New Owners or Reorganised Ventures </br> Any other person given your consent </br></br> Third Party: </br> Data Sharing </br></br> Legal Basis: </br> Data Sharing with Authorities </br></br> Consent: </br> Data Sharing with Entities given your Permission'},
+		{id: 24, value: 10, label: 'Processing Personal Information', font:{size:15}, shape: 'box', title: 'Legal Basis: To Fulfil Contract, Legitimate Business Interest </br> Processor: Just Eat </br> Process: Processing Personal Information'},
+		{id: 25, value: 10, label: 'International Data Transfers', font:{size:15}, shape: 'box', title: 'Process: Transfer of Personal Information </br> Processor: Service Providers </br> Legal Basis: Differing Data Protection Laws of Countries'},
+		{id: 26, value: 10, label: 'Security', font:{size:15}, shape: 'box', title: 'Process: Implementation of technical and organisational measures'},
+		{id: 27, value: 10, label: 'Data Retention', font:{size:15}, shape: 'box', title: 'Data Retention: </br> Personal Information: No longer than is necessary </br> Certain Elements of Personal Information: After you delete or deactivate your account </br></br> Legal Basis </br> In compliance with applicable laws'},
+		{id: 28, value: 10, label: 'Your Data Protection Rights', font:{size:15}, shape: 'box', title: 'Rights: Access your Account, Unsubscribe from marketing communications </br> Third Party: Requesting that personal information is ported </br> Process: Delete your personal information, Restrict its processing, Request that it be ported to a third party'},
+		{id: 29, value: 10, label: 'Links to Third Party Sites', font:{size:15}, shape: 'box', title: 'Third Party: Partner Networks, Advertisers & Affiliates'}
+      ];
+	  
+      // create connections.
+      // value corresponds with the amount of contact between two people
+      edges = [
+		{from: 20, to: 13, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 2, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 3, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 12, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 5, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 11, value: 1, color:{color: 'lightgray'}},
+		{from: 20, to: 4, value: 1, color:{color: 'lightgray'}},
+		{from: 21, to: 7, value: 1, color:{color: 'lightgray'}},
+		{from: 21, to: 3, value: 1, color:{color: 'lightgray'}},
+		{from: 21, to: 5, value: 1, color:{color: 'lightgray'}},
+		{from: 21, to: 13, value: 1, color:{color: 'lightgray'}},
+		{from: 21, to: 12, value: 1, color:{color: 'lightgray'}},
+		{from: 22, to: 5, value: 1, color:{color: 'lightgray'}},
+		{from: 22, to: 3, value: 1, color:{color: 'lightgray'}},
+		{from: 22, to: 11, value: 1, color:{color: 'lightgray'}},
+		{from: 23, to: 12, value: 1, color:{color: 'lightgray'}},
+		{from: 23, to: 11, value: 1, color:{color: 'lightgray'}},
+		{from: 23, to: 4, value: 1, color:{color: 'lightgray'}},
+		{from: 23, to: 13, value: 1, color:{color: 'lightgray'}},
+		{from: 24, to: 4, value: 1, color:{color: 'lightgray'}},
+		{from: 24, to: 6, value: 1, color:{color: 'lightgray'}},
+		{from: 24, to: 1, value: 1, color:{color: 'lightgray'}},
+		{from: 25, to: 1, value: 1, color:{color: 'lightgray'}},
+		{from: 25, to: 6, value: 1, color:{color: 'lightgray'}},
+		{from: 25, to: 4, value: 1, color:{color: 'lightgray'}},
+		{from: 26, to: 1, value: 1, color:{color: 'lightgray'}},
+		{from: 27, to: 9, value: 1, color:{color: 'lightgray'}},
+		{from: 27, to: 4, value: 1, color:{color: 'lightgray'}},
+		{from: 28, to: 10, value: 1, color:{color: 'lightgray'}},
+		{from: 28, to: 11, value: 1, color:{color: 'lightgray'}},
+		{from: 28, to: 1, value: 1, color:{color: 'lightgray'}},
+		{from: 29, to: 11, value: 1, color:{color: 'lightgray'}}
+      ];
+
+      // Instantiate our network object.
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+		physics: {
+			stabilization: true,
+			barnesHut: {
+				avoidOverlap: 0.15,
+				springLength: 200
+			}	
+		},	
+        nodes: {
+          shape: 'dot',
+		  labelHighlightBold: true
+        },
+        edges: {
+          inherit: false
+        },
+		interaction: {
+			navigationButtons: true,
+			keyboard: true
+		}
+      };
+      network = new vis.Network(container, data, options);
+	  
+	  network.on('select', function(params) {
+        document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
+      });
+    }
+  </script>
+  <script>
+	function show(shown, hidden) {
+		document.getElementById(shown).style.display='block';
+		document.getElementById(hidden).style.display='none';
+		return false;
+	}
+  </script>
+  <body>
+  
+	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization </h1>
+	<p align="right"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\StandardPrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
+	</p>
+	</body>
+</head>
+
+<body onload="draw()">
+	<div id="mynetwork"></div>
+
+</body>
+</html>
