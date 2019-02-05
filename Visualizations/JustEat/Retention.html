@@ -1,0 +1,283 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Just Eat Privacy Policy</title>
+
+  <meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis-network.min.css" rel="stylesheet" />
+  <style type="text/css">
+    html, body {
+      font: 10pt arial;
+    }
+    #mynetwork {
+      width: 1325px;
+      height: 550px;
+      border: 1px solid lightgray;
+    }
+	
+	div.vis-network div.vis-navigation div.vis-button.vis-up, 
+	div.vis-network div.vis-navigation div.vis-button.vis-down, 
+	div.vis-network div.vis-navigation div.vis-button.vis-left, 
+	div.vis-network div.vis-navigation div.vis-button.vis-right, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomIn, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomOut, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomExtends {
+		background-image: none !important;
+	}
+
+	div.vis-network div.vis-navigation div.vis-button:hover {
+		box-shadow: none !important;
+	}
+
+	.vis-button:after {
+		font-size: 2em;
+		color: gray;
+	}
+
+	.vis-button:hover:after {
+		font-size: 2em;
+		color: blue;
+	}
+
+	.vis-button.vis-up:after {
+		content: "▲";
+	}
+
+	.vis-button.vis-down:after {
+		content: "▼";
+	}
+
+	.vis-button.vis-left:after {
+		content: "◀";
+	}
+
+	.vis-button.vis-right:after {
+		content: "▶";
+	}
+
+	.vis-button.vis-zoomIn:after {
+		content: "+";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomOut:after {
+		content: "−";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomExtends:after {
+		content: "⤧";
+	}
+	
+	p.b { 
+		word-spacing: 30px;
+	}
+
+	.collapsible {
+		background-color: #777;
+		color: white;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 15px;
+	}
+
+	.active, .collapsible:hover {
+		background-color: rgba(0,255,255,0.6);
+	}
+
+	.content {
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	}
+	
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 60px;
+		height: 34px;
+	}
+
+	.switch input { 
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #ccc;
+		-webkit-transition: .4s;
+		transition: .4s;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: "";
+		height: 26px;
+		width: 26px;
+		left: 4px;
+		bottom: 4px;
+		background-color: white;
+		-webkit-transition: .4s;
+		transition: .4s;
+	}
+
+	input:checked + .slider {
+		background-color: #2196F3;
+	}
+
+	input:focus + .slider {
+		box-shadow: 0 0 1px #2196F3;
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+	}
+
+	/* Rounded sliders */
+		.slider.round {
+		border-radius: 34px;
+	}
+
+	.slider.round:before {
+		border-radius: 50%;
+	}
+  </style>
+
+  <script type="text/javascript" src="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.js"></script>
+  <link href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    function draw() {
+      // create people.
+      // value corresponds with the age of the person
+      nodes = [
+		{id: 9, value: 5, color: 'rgba(0,255,255,0.6)', font:{multi: 'html', size:14}, label:'<b>DATA RETENTION</b>', shape: 'circle'},
+		{id: 27, value: 10, label: '<b>Data Retention</b>', font:{multi: 'html', size:25}, shape: 'box', title: 'Data Retention: </br> Personal Information: No longer than is necessary </br> Certain Elements of Personal Information: After you delete or deactivate your account </br></br> Legal Basis: </br> In compliance with applicable laws </br> Legitimate Business </br></br> Consent: </br> Processing Certain Personal Information </br></br> Process: </br> Storage of Information until deletion is possible'}
+      ];
+	  
+      // create connections.
+      // value corresponds with the amount of contact between two people
+      edges = [
+		{from: 27, to: 9, value: 1, color:{color: 'lightgray'}}
+      ];
+
+      // Instantiate our network object.
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+		physics: {
+			stabilization: true,
+			barnesHut: {
+				avoidOverlap: 0.6,
+				springLength: 450,
+				damping: 1
+			},
+			physics: false
+		},	
+        nodes: {
+          shape: 'dot',
+		  labelHighlightBold: true
+        },
+        edges: {
+          inherit: false
+        },
+		interaction: {
+			navigationButtons: true,
+			keyboard: true
+		},
+		layout: {
+			improvedLayout: true
+		}	
+      };
+      network = new vis.Network(container, data, options);
+	  
+	  network.on('select', function(params) {
+        document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
+      });
+    }
+  </script>
+  <script>
+	function show(shown, hidden) {
+		document.getElementById(shown).style.display='block';
+		document.getElementById(hidden).style.display='none';
+		return false;
+	}
+  </script>
+  <body>
+  
+	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization </h1>
+	<p align="right"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
+	</p>
+	<h2>Retention</h2>
+
+	<button class="collapsible">Data Retention</button>
+	<div class="content">
+		<p>Just Eat will retain your personal information where we have an ongoing legitimate business need to do so (for example, while you hold an account with us or to enable us to meet our legal, tax or accounting obligations).</p>
+	</div>
+	<button class="collapsible">Consent</button>
+	<div class="content">
+		<p>If you object to us processing certain categories of your personal information (including in relation to receiving marketing communications from us), we will retain a record of your objection to the processing of your information so that we can continue to respect your wishes.</p>
+		<p align = "center">Object to the processing of certain personal information</p>
+		<p align = "center">
+		<label class="switch">
+			<input type="checkbox">
+			<span class="slider round"></span>
+		</label>
+		</p>
+	</div>
+	<button class="collapsible">Process</button>
+	<div class="content">
+		<p>We will destroy or permanently anonymise your personal information at the point that we no longer need to process it for our ongoing legitimate business needs or for any legal reason. If this is not possible (for example, because your personal information has been stored in backup archives), then we will securely store it and isolate it from any further processing until deletion is possible.</p>
+	</div>
+
+	<script>
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.display === "block") {
+			content.style.display = "none";
+		} else {
+			content.style.display = "block";
+		}
+		});
+	}
+	</script>
+	<p class = "b"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Main.html" target="_self">Overall</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Consent.html" target="_self">Consent</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Rights.html" target="_self">Rights</a> Retention <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Process.html" target="_self">Process</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSource.html" target="_self"> DataSource</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Processor.html" target="_self">Processor</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Automated.html" target="_self">Automated</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Location.html" target="_self">Location</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataType.html" target="_self">DataType</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSharing.html" target="_self">DataSharing</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\ThirdParty.html" target="_self">ThirdParty</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\LegalBasis.html" target="_self">LegalBasis</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataCategory.html" target="_self">DataCategory</a>
+	</p>
+	</body>
+</head>
+
+<body onload="draw()">
+	<div id="mynetwork"></div>
+
+</body>
+</html>
