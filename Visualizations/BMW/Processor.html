@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Just Eat Privacy Policy</title>
+  <title>BMW Privacy Policy</title>
 
   <meta charset="utf-8">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -13,11 +13,11 @@
     }
     #mynetwork {
       width: 1000px;
-      height: 450px;
+      height: 400px;
       border: 5px solid yellow;
 	  position: absolute;
 	  left: 350px;
-	  top: 150px;
+	  top: 200px;
     }
 	
 	div.vis-network div.vis-navigation div.vis-button.vis-up, 
@@ -106,8 +106,8 @@
 	}
   </style>
 
-  <script type="text/javascript" src="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.js"></script>
-  <link href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\vis.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\vis.js"></script>
+  <link href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\vis.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript">
     var nodes = null;
@@ -119,20 +119,18 @@
       // value corresponds with the age of the person
       nodes = [
         {id: 6, value: 5, color: 'rgba(255,255,0, 0.8)', font:{multi: 'html', size:19}, label:'<b>PROCESSOR</b>', shape: 'circle'},
-		{id: 20, value: 10, label: '<b>Information Provided</b>', font:{multi: 'html', size:25}, shape: 'box'},
-		{id: 23, value: 10, label: '<b>Who Information is Shared with</b>', font:{multi: 'html', size:25}, shape: 'box'},
+		{id: 25, value: 10, label: '<b>Who Information is Shared with</b>', font:{multi: 'html', size:25}, shape: 'box'},
 		{id: 24, value: 10, label: '<b>Processing Personal Information</b>', font:{multi: 'html', size:25}, shape: 'box'},
-		{id: 25, value: 10, label: '<b>International Data Transfers</b>', font:{multi: 'html', size:25}, shape: 'box'}
+		{id: 28, value: 10, label: '<b>Your Data Protection Rights</b>', font:{multi: 'html', size:25}, shape: 'box'}
       ];
 	  
       // create connections.
       // value corresponds with the amount of contact between two people
       edges = [
-		{from: 6, to: 20, value: 1, color:{color: 'lightgray'}},
-		{from: 6, to: 23, value: 1, color:{color: 'lightgray'}},
 		{from: 6, to: 24, value: 1, color:{color: 'lightgray'}},
-		{from: 6, to: 25, value: 1, color:{color: 'lightgray'}}		
-      ];
+		{from: 6, to: 25, value: 1, color:{color: 'lightgray'}},
+		{from: 6, to: 28, value: 1, color:{color: 'lightgray'}}
+	  ];
 
       // Instantiate our network object.
       var container = document.getElementById('mynetwork');
@@ -181,9 +179,12 @@
   </script>
   <body>
   
-	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\JustEat.png" align="right" width="40" height="40" ></h1>
-	<p align="left"> 
-		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
+	<h1 style="font-size:200%"> BMW Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\BMW.png" align="right" width="40" height="40" ></h1>
+	<p align="right"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\BMW.html" target="_self">Show Standard Policy</a>
+	</p>
+	<p class = "b"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Main.html" target="_self">Overall</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Consent.html" target="_self">Consent</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Rights.html" target="_self">Rights</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Retention.html" target="_self">Retention</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Process.html" target="_self">Process</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\DataSource.html" target="_self">DataSource</a> Processor <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Automated.html" target="_self">Automated</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\Location.html" target="_self">Location</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\DataType.html" target="_self">DataType</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\DataSharing.html" target="_self">DataSharing</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\ThirdParty.html" target="_self">ThirdParty</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\LegalBasis.html" target="_self">LegalBasis</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\BMW\DataCategory.html" target="_self">DataCategory</a>
 	</p>
 	</br></br></br></br>
 	<h2>Processor</h2>
@@ -191,24 +192,17 @@
 	<p>Processing That Requires Your Consent:</p>
 	<button class="collapsible">Who Information is Shared with</button>
 	<div class="content">
-		<p>Third Party Processors: </br> Subsidiaries & Affiliates </br> Customer Support Agents & Hosting Providers </br> eCRM Providers (Salesforce) </br> Twilio</p>
+		<p>Processes: </br> Transfer of Personal Information</p>
 	</div>
-	<div align="left">
-	<button class="collapsible"> Information Provided </button>
+	<div align= "left">
+	<button class="collapsible">Processing Personal Information</button>
 	<div class="content">
-		<p>Third Party Processors: </br> Restaurants </br> Apple Pay </br> Pay with Google </br> Delivery Companies</p>
+		<p>Processes: </br> Customer Support </br> Vehicle Sales & Services </br> Vehicle Finance </br> Marketing </br> Quality Assurance & Fraud Prevention</p>
 	</div>
 	</div>
-	<button class="collapsible">Processing of Personal Information</button>
+	<button class="collapsible">Your Data Protection Rights</button>
 	<div class="content">
-		<p>Third Party Processors: </br> None</p>
-	</div>
-	</br></br>
-	</br></br>
-	<p>Processing That Does Not Require Your Consent:</p>
-	<button class="collapsible">International Data Transfers</button>
-	<div class="content">
-		<p>Third Party Processors: </br> Relevant International Countries (See Location Tab)</p>
+		<p>Processes: </br> Delete your Personal Information </br> Restrict its Processing </br> Request that it is Ported to a Third Party</p>
 	</div>
 
 	<script>
@@ -231,11 +225,6 @@
 		<div align= "right">
 			<div id="mynetwork"</div>
 		</div>	
-	</body>
-	
-	<p class = "b"> 
-		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Main.html" target="_self">Overall</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Consent.html" target="_self">Consent</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Rights.html" target="_self">Rights</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Retention.html" target="_self">Retention</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Process.html" target="_self">Process</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSource.html" target="_self">DataSource</a> Processor <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Automated.html" target="_self">Automated</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Location.html" target="_self">Location</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataType.html" target="_self">DataType</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSharing.html" target="_self">DataSharing</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\ThirdParty.html" target="_self">ThirdParty</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\LegalBasis.html" target="_self">LegalBasis</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataCategory.html" target="_self">DataCategory</a>
-	</p>
 	</body>
 </head>
 

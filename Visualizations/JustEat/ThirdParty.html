@@ -12,9 +12,12 @@
       font: 10pt arial;
     }
     #mynetwork {
-      width: 1325px;
-      height: 550px;
-      border: 1px solid lightgray;
+	  width: 1050px;
+      height: 450px;
+      border: 5px solid rgba(150,255,0,0.4);
+	  position: absolute;
+	  left: 300px;
+	  top: 150px;
     }
 	
 	div.vis-network div.vis-navigation div.vis-button.vis-up, 
@@ -72,6 +75,9 @@
 	}
 	
 	p.b { 
+		position: fixed;
+		bottom: 520px;
+		right: 100px;
 		word-spacing: 30px;
 	}
 
@@ -80,7 +86,7 @@
 		color: white;
 		cursor: pointer;
 		padding: 18px;
-		width: 100%;
+		width: 20%;
 		border: none;
 		text-align: left;
 		outline: none;
@@ -92,10 +98,12 @@
 	}
 
 	.content {
-		padding: 0 18px;
+		padding: 0 30px;
 		display: none;
 		overflow: hidden;
-		background-color: #f1f1f1;
+		background-color: white;
+		width: 40%;
+		height: 30px;
 	}
   </style>
 
@@ -157,6 +165,7 @@
 			keyboard: true
 		},
 		layout: {
+			randomSeed: 4,
 			improvedLayout: true
 		}	
       };
@@ -176,10 +185,11 @@
   </script>
   <body>
   
-	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization </h1>
-	<p align="right"> 
+	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\JustEat.png" align="right" width="40" height="40" ></h1>
+	<p align="left"> 
 		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
 	</p>
+	</br></br></br></br>
 	<h2>Third Party</h2>
 
 	<p>Third Party Privacy Policies</p>
@@ -187,17 +197,21 @@
 	<div class="content">
 		<a href = "https://www.facebook.com/legal/FB_Work_Privacy">Facebook Privacy Policy</a>
 	</div>
+	<div align= "left">
 	<button class="collapsible">Google</button>
 	<div class="content">
 		<a href = "https://policies.google.com/privacy?hl=en"> Google Privacy Policy </a>
+	</div>
 	</div>
 	<button class="collapsible">Amazon</button>
 	<div class="content">
 		<a href = "https://www.amazon.com/gp/help/customer/display.html?nodeId=468496"> Amazon Privacy Policy</a>
 	</div>
+	<div align= "left">
 	<button class="collapsible">Apple Pay</button>
 	<div class="content">
 		<a href = "https://support.apple.com/en-ie/HT203027"> Apple Pay Privacy Policy </a>
+	</div>
 	</div>
 	<button class="collapsible">Twilio</button>
 	<div class="content">

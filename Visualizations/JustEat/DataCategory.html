@@ -12,9 +12,12 @@
       font: 10pt arial;
     }
     #mynetwork {
-      width: 1325px;
-      height: 550px;
-      border: 1px solid lightgray;
+      width: 1050px;
+      height: 450px;
+      border: 5px solid rgba(255, 0, 0, 0.4);
+	  position: absolute;
+	  left: 300px;
+	  top: 150px;
     }
 	
 	div.vis-network div.vis-navigation div.vis-button.vis-up, 
@@ -72,6 +75,9 @@
 	}
 	
 	p.b { 
+		position: fixed;
+		bottom: 520px;
+		right: 100px;
 		word-spacing: 30px;
 	}
 
@@ -80,7 +86,7 @@
 		color: white;
 		cursor: pointer;
 		padding: 18px;
-		width: 100%;
+		width: 20%;
 		border: none;
 		text-align: left;
 		outline: none;
@@ -95,7 +101,8 @@
 		padding: 0 18px;
 		display: none;
 		overflow: hidden;
-		background-color: #f1f1f1;
+		background-color: white;
+		width: 20%;
 	}
   </style>
 
@@ -172,19 +179,22 @@
   </script>
   <body>
   
-	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization </h1>
-	<p align="right"> 
+	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\JustEat.png" align="right" width="40" height="40" ></h1>
+	<p align="left"> 
 		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
 	</p>
+	</br></br></br></br>
 	<h2>Data Category</h2>
 
 	<button class="collapsible">Provided Voluntarily</button>
 	<div class="content">
 		<p>Registration Information </br> Delivery Details </br> Transaction Information </br> Market Preferences </br> Feedback </br> Conversation Records </br> Health Information </br> Religious Beliefs </p>
 	</div>
+	<div align="left">
 	<button class="collapsible">Collected Automatically</button>
 	<div class="content">
 		<p>Activity Information </br> Cookies and Related Information</p>
+	</div>
 	</div>
 	<button class="collapsible">Information from Third Parties</button>
 	<div class="content">

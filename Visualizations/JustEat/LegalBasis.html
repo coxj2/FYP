@@ -12,9 +12,12 @@
       font: 10pt arial;
     }
     #mynetwork {
-      width: 1325px;
-      height: 550px;
-      border: 1px solid lightgray;
+      width: 900px;
+      height: 450px;
+      border: 5px solid blue;
+	  position: absolute;
+	  left: 400px;
+	  top: 150px;
     }
 	
 	div.vis-network div.vis-navigation div.vis-button.vis-up, 
@@ -72,6 +75,9 @@
 	}
 	
 	p.b { 
+		position: fixed;
+		bottom: 520px;
+		right: 100px;
 		word-spacing: 30px;
 	}
 
@@ -80,7 +86,7 @@
 		color: white;
 		cursor: pointer;
 		padding: 18px;
-		width: 100%;
+		width: 25%;
 		border: none;
 		text-align: left;
 		outline: none;
@@ -95,6 +101,7 @@
 		padding: 0 18px;
 		display: none;
 		overflow: hidden;
+		width: 40%
 		background-color: #f1f1f1;
 	}
   </style>
@@ -180,28 +187,33 @@
   </script>
   <body>
   
-	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization </h1>
-	<p align="right"> 
+	<h1 style="font-size:200%"> Just Eat Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\JustEat.png" align="right" width="40" height="40" ></h1>
+	<p align="left"> 
 		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\JustEat.html" target="_self">Show Standard Policy</a>
 	</p>
+	</br></br></br></br>
 	<h2>Legal Basis</h2>
 
-	<p>Legal Reason</p>
+	<p>Legal Reasons:</p>
 	<button class="collapsible">Legitimate Business Interest</button>
 	<div class="content">
 		<p>Processing Personal Information </br> Data Retention </p>
 	</div>
+	<div align = "left">
 	<button class="collapsible">In Compliance with Data Protection Laws</button>
 	<div class="content">
 		<p>Processing Personal Information </br> Data Retention </br> Information Collected Automatically </br> International Data Transfers </br> Information from Third Parties </p>
+	</div>
 	</div>
 	<button class="collapsible">Contractual Fulfilment</button>
 	<div class="content">
 		<p>Processing Personal Information </br> Information Provided</p>
 	</div>
+	<div align = "left">
 	<button class="collapsible">GDPR Authorities</button>
 	<div class="content">
 		<p>Who Information is Shared with</p>
+	</div>
 	</div>
 
 	<script>
@@ -220,14 +232,17 @@
 		});
 	}
 	</script>
+	<body onload="draw()">
+		<div align = "right">
+			<div id="mynetwork"></div>
+		</div>
+	</body>
+	
 	<p class = "b"> 
 		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Main.html" target="_self">Overall</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Consent.html" target="_self">Consent</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Rights.html" target="_self">Rights</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Retention.html" target="_self">Retention</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Process.html" target="_self">Process</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSource.html" target="_self">DataSource</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Processor.html" target="_self">Processor</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Automated.html" target="_self">Automated</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\Location.html" target="_self">Location</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataType.html" target="_self">DataType</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataSharing.html" target="_self">DataSharing</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\ThirdParty.html" target="_self">ThirdParty</a> LegalBasis <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\JustEat\DataCategory.html" target="_self">DataCategory</a>
 	</p>
 	</body>
 </head>
 
-<body onload="draw()">
-	<div id="mynetwork"></div>
 
-</body>
 </html>
