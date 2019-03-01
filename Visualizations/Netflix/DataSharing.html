@@ -1,0 +1,208 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Netflix Privacy Policy</title>
+
+  <meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.1/vis-network.min.css" rel="stylesheet" />
+  <style type="text/css">
+    html, body {
+      font: 10pt arial;
+    }
+    #mynetwork {
+      width: 1325px;
+      height: 470px;
+      border: 5px solid rgba(150,55,200,0.6);
+    }
+	
+	div.vis-network div.vis-navigation div.vis-button.vis-up, 
+	div.vis-network div.vis-navigation div.vis-button.vis-down, 
+	div.vis-network div.vis-navigation div.vis-button.vis-left, 
+	div.vis-network div.vis-navigation div.vis-button.vis-right, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomIn, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomOut, 
+	div.vis-network div.vis-navigation div.vis-button.vis-zoomExtends {
+		background-image: none !important;
+	}
+
+	div.vis-network div.vis-navigation div.vis-button:hover {
+		box-shadow: none !important;
+	}
+
+	.vis-button:after {
+		font-size: 2em;
+		color: gray;
+	}
+
+	.vis-button:hover:after {
+		font-size: 2em;
+		color: blue;
+	}
+
+	.vis-button.vis-up:after {
+		content: "▲";
+	}
+
+	.vis-button.vis-down:after {
+		content: "▼";
+	}
+
+	.vis-button.vis-left:after {
+		content: "◀";
+	}
+
+	.vis-button.vis-right:after {
+		content: "▶";
+	}
+
+	.vis-button.vis-zoomIn:after {
+		content: "+";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomOut:after {
+		content: "−";
+		font-weight: bold;
+	}
+
+	.vis-button.vis-zoomExtends:after {
+		content: "⤧";
+	}
+	
+	p.b { 
+		word-spacing: 30px;
+	}
+
+	.collapsible {
+		background-color: #777;
+		color: white;
+		cursor: pointer;
+		padding: 18px;
+		width: 100%;
+		border: none;
+		text-align: left;
+		outline: none;
+		font-size: 15px;
+	}
+
+	.active, .collapsible:hover {
+		background-color: rgba(150,55,200,0.6);
+	}
+
+	.content {
+		padding: 0 18px;
+		display: none;
+		overflow: hidden;
+		background-color: #f1f1f1;
+	}
+  </style>
+
+  <script type="text/javascript" src="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\vis.js"></script>
+  <link href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\vis.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript">
+    var nodes = null;
+    var edges = null;
+    var network = null;
+
+    function draw() {
+      // create people.
+      // value corresponds with the age of the person
+      nodes = [
+        {id: 12, value: 5, color: 'rgba(150,55,200,0.6)', font:{multi: 'html', size:16}, label:'<b>DATA SHARING</b>', shape: 'circle'},
+		{id: 20, value: 10, label: '<b>Information Provided</b>', font:{multi: 'html', size:38}, shape: 'box', title: 'Consent: Voluntary </br> Data Category: Registration Information, Account Settings, Transaction Information, Taste Preferences, Feedback & Reviews </br> Data Source: Customer Service, Surveys & Marketing Promotions </br> Third Party: Marketing Affiliates </br> Legal Basis: Prevent Acts in Breach of Terms or Policy </br> Data Type: Name, Email Address, Address, Payment Method(s), Telephone Number & Government Identification Number </br> Process: Prevent & Detect Fraud, Marketing </br> Processor: Payment Processors </br> Rights: Unsubscribe, Opt-out'},
+		{id: 21, value: 10, label: '<b>Information Collected Automatically</b>', font:{multi: 'html', size:35}, shape: 'box', title: 'Automated: Collected Automatically (From your Device) </br> Data Category: Activity Information, Cookies and Similar Technologies, Conversations & Call Recordings</br> Data Type: Title Selections, Watch History, Search Queries, Device ID, Referral URLs & IP Address </br> Legal Basis: Applicable Data Protection Laws </br> Data Source: Cookies, Web Beacons, Conversation Transcripts & Advertising Affiliates </br> Data Sharing: Watch History </br> Location: EEA and Non-EEA Countries </br> Process: Display Advertisements, Analyse Buying Habits'},
+		{id: 23, value: 10, label: '<b>Who Information is Shared with</b>', font:{multi: 'html', size:35}, shape: 'box', title: 'Data Sharing: </br> Netflix, Inc. </br> Netflix International B.V. </br> Netflix Entretenimento Brasil, Ltda. </br> Netflix Entertainment Services India LLP </br> Netflix K.K. </br> Netflix Services Korea Ltd. </br></br> Third Party: </br> Subsidiaries & Affiliates </br> Customer Support Agents & Hosting Providers </br> Service Providers </br></br> Legal Basis: </br> Data Sharing with Authorities </br></br> Consent: </br> Data Sharing with Entities </br></br> Processors: </br> Payment Processors </br> Service Providers </br></br> Rights: </br> Unsubscribe'}
+      ];
+	  
+      // create connections.
+      // value corresponds with the amount of contact between two people
+      edges = [
+		{from: 12, to: 20, value: 1, color:{color: 'lightgray'}},
+		{from: 12, to: 21, value: 1, color:{color: 'lightgray'}},
+		{from: 12, to: 23, value: 1, color:{color: 'lightgray'}}
+
+      ];
+
+      // Instantiate our network object.
+      var container = document.getElementById('mynetwork');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+		physics: {
+			stabilization: true,
+			barnesHut: {
+				avoidOverlap: 0.6,
+				springLength: 450,
+				damping: 1
+			},
+			physics: false
+		},	
+        nodes: {
+          shape: 'dot',
+		  labelHighlightBold: true
+        },
+        edges: {
+          inherit: false
+        },
+		interaction: {
+			navigationButtons: true,
+			keyboard: true
+		},
+		layout: {
+			improvedLayout: true
+		}	
+      };
+      network = new vis.Network(container, data, options);
+	  
+	  network.on('select', function(params) {
+        document.getElementById('selection').innerHTML = 'Selection: ' + params.nodes;
+      });
+    }
+  </script>
+  <script>
+	function show(shown, hidden) {
+		document.getElementById(shown).style.display='block';
+		document.getElementById(hidden).style.display='none';
+		return false;
+	}
+  </script>
+  <body>
+  
+	<h1 style="font-size:200%"> Netflix Privacy Policy Visualization <img src="C:\Users\James\Desktop\4thYear\FinalYearProject\Notes\DesignNotes\CompanyLogos\Netflix2.png" align="right" width="140" height="100" ></h1>
+	<p align="left"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\PrivacyPolicies\Netflix.html" target="_self">Show Standard Policy</a>
+	</p>
+	<h2>Data Sharing</h2>
+
+	<script>
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+		this.classList.toggle("active");
+		var content = this.nextElementSibling;
+		if (content.style.display === "block") {
+			content.style.display = "none";
+		} else {
+			content.style.display = "block";
+		}
+		});
+	}
+	</script>
+	<p class = "b"> 
+		<a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Main.html" target="_self">Overall</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Consent.html" target="_self">Consent</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Rights.html" target="_self">Rights</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Retention.html" target="_self">Retention</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Process.html" target="_self">Process</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\DataSource.html" target="_self">DataSource</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Processor.html" target="_self">Processor</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Automated.html" target="_self">Automated</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\Location.html" target="_self">Location</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\DataType.html" target="_self">DataType</a> DataSharing <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\ThirdParty.html" target="_self">ThirdParty</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\LegalBasis.html" target="_self">LegalBasis</a> <a href="C:\Users\James\Desktop\4thYear\FinalYearProject\Visualisations\Netflix\DataCategory.html" target="_self">DataCategory</a>
+	</p>
+	</body>
+</head>
+
+<body onload="draw()">
+	<div id="mynetwork"></div>
+
+</body>
+</html>
